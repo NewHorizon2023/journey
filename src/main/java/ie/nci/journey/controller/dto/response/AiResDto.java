@@ -1,7 +1,5 @@
 package ie.nci.journey.controller.dto.response;
 
-import java.util.Date;
-
 /**
  * AiResponse
  *
@@ -10,12 +8,12 @@ import java.util.Date;
  */
 public class AiResDto {
     private String text;
-    private Date timestamp;
+    private String timestamp;
 
     public AiResDto() {
     }
 
-    public AiResDto(String text, Date timestamp) {
+    public AiResDto(String text, String timestamp) {
         this.text = text;
         this.timestamp = timestamp;
     }
@@ -28,11 +26,11 @@ public class AiResDto {
         this.text = text;
     }
 
-    public Date getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.SimpleDateFormat;
+
 /**
  * ThirdPartApi
  *
@@ -37,8 +39,9 @@ public class AiApi {
                 AiApiDto.class
         );
         AiApiDto aiApiDto = response.getBody();
-
         assert aiApiDto != null;
-        return new AiResDto(aiApiDto.getResult(), aiApiDto.getCreated());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return new AiResDto(aiApiDto.getResult(), dateFormat.format(aiApiDto.getCreated()));
     }
 }
