@@ -1,4 +1,4 @@
-package ie.nci.journey.controller.param.request;
+package ie.nci.journey.controller.dto.request;
 
 /**
  * AiRequest
@@ -6,7 +6,7 @@ package ie.nci.journey.controller.param.request;
  * @Author: Xiangnan Liu
  * @CreateTime: 2023-10-08
  */
-public class AiReqParam {
+public class AiReqDto {
     private String question;
 
     public String getQuestion() {

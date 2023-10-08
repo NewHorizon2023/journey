@@ -1,4 +1,4 @@
-package ie.nci.journey.controller.param;
+package ie.nci.journey.controller.dto;
 
 /**
  * ApiResponse
