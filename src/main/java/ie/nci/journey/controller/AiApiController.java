@@ -1,8 +1,11 @@
 package ie.nci.journey.controller;
 
 import ie.nci.journey.api.AiApi;
+import ie.nci.journey.controller.param.Response;
+import ie.nci.journey.controller.param.request.AiReqParam;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +20,7 @@ public class AiApiController {
     private AiApi aiApi;
 
     @PostMapping("/ai")
-    public String getAiAnswer(String question) {
-        return aiApi.getAiAnswer(question);
+    public Response<String> getAiAnswer(@RequestBody AiReqParam request) {
+        return Response.ok(aiApi.getAiAnswer(request.getQuestion()));
     }
 }

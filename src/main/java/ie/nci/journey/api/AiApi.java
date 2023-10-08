@@ -27,7 +27,7 @@ public class AiApi {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer YourAccessToken");
         headers.set("Content-Type", "application/json");
-        HttpEntity<String> requestEntity = new HttpEntity<>("{\"messages\":[{\"role\":\"user\",\"content\":\"鱼香茄子怎么做？\"}]}", headers);
+        HttpEntity<String> requestEntity = new HttpEntity<>("{\"messages\":[{\"role\":\"user\",\"content\":\"" + question + "\"}]}", headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
                 "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant?access_token=24.dc699c850f5cfbd93a00ee40c4515ffa.2592000.1699055845.282335-40499958",
