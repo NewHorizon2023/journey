@@ -2,6 +2,7 @@ package ie.nci.journey.api;
 
 import ie.nci.journey.api.dto.AiAccessTokenDto;
 import ie.nci.journey.api.dto.AiDto;
+import ie.nci.journey.controller.dto.request.AiReqDto;
 import ie.nci.journey.controller.dto.response.AiResDto;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
@@ -62,23 +63,24 @@ public class AiApi {
         accessToken = aiAccessTokenDto.getAccessToken();
     }
 
-    public AiResDto getAiAnswer(String question) {
+    public AiResDto getAiAnswer(AiReqDto aiReqDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
-        HttpEntity<String> requestEntity = new HttpEntity<>("{\"messages\":[{\"role\":\"user\",\"content\":\"" + question + "\"}]}", headers);
+        HttpEntity<AiReqDto> requestEntity = new HttpEntity<>(aiReqDto, headers);
 
         // Get answer from AI
-        ResponseEntity<AiDto> response = restTemplate.postForEntity(answerUrl + accessToken, requestEntity, AiDto.class);
+        UriComponentsBuilder builder = fromUriString(answerUrl).queryParam("access_token", accessToken);
+        ResponseEntity<AiDto> response = restTemplate.postForEntity(builder.toUriString(), requestEntity, AiDto.class);
         AiDto aiDto = response.getBody();
 
         // If access token expired, request again
         if (aiDto == null || aiDto.getResult() == null) {
             getAiAccessToken();
-            response = restTemplate.postForEntity(answerUrl + accessToken, requestEntity, AiDto.class);
+            response = restTemplate.postForEntity(builder.toUriString(), requestEntity, AiDto.class);
             aiDto = response.getBody();
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return new AiResDto(aiDto.getResult(), dateFormat.format(aiDto.getCreated()));
     }
 }

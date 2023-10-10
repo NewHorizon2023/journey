@@ -6,13 +6,11 @@ import ie.nci.journey.api.WeatherApi;
 import ie.nci.journey.api.dto.AirbnbDto;
 import ie.nci.journey.api.dto.WeatherDto;
 import ie.nci.journey.controller.dto.Response;
+import ie.nci.journey.controller.dto.request.AiReqDto;
 import ie.nci.journey.controller.dto.request.AirbnbReqDto;
 import ie.nci.journey.controller.dto.response.AiResDto;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * AiApiController
@@ -30,9 +28,9 @@ public class ApiController {
     @Resource
     private AirbnbApi airbnbApi;
 
-    @GetMapping("/ai")
-    public Response<AiResDto> getAiAnswer(@RequestParam String question) {
-        return Response.ok(aiApi.getAiAnswer(question));
+    @PostMapping("/ai")
+    public Response<AiResDto> getAiAnswer(@RequestBody AiReqDto aiReqDto) {
+        return Response.ok(aiApi.getAiAnswer(aiReqDto));
     }
 
     @GetMapping("/weather")
