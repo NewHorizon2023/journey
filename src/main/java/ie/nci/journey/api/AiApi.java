@@ -1,17 +1,21 @@
 package ie.nci.journey.api;
 
-import ie.nci.journey.api.dto.AccessTokenDto;
-import ie.nci.journey.api.dto.AiApiDto;
+import ie.nci.journey.api.dto.AiAccessTokenDto;
+import ie.nci.journey.api.dto.AiDto;
 import ie.nci.journey.controller.dto.response.AiResDto;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.text.SimpleDateFormat;
+
+import static org.springframework.web.util.UriComponentsBuilder.fromUriString;
 
 /**
  * ThirdPartApi
@@ -25,16 +29,37 @@ public class AiApi {
     @Resource
     private RestTemplate restTemplate;
 
+    @Value("${api.ai.answer.url}")
+    private String answerUrl;
+
+    @Value("${api.ai.getAccessToken.url}")
+    private String tokenUrl;
+
+    @Value("${api.ai.getAccessToken.grantType}")
+    private String grantType;
+
+    @Value("${api.ai.getAccessToken.clientId}")
+    private String clientId;
+
+    @Value("${api.ai.getAccessToken.clientSecret}")
+    private String clientSecret;
+
     @PostConstruct
     public void init() {
+        // Get access token for AI request
         getAiAccessToken();
     }
 
     public void getAiAccessToken() {
-        ResponseEntity<AccessTokenDto> response = restTemplate.getForEntity("https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=x5ElkR5OBBSRZbyDMm0dIYvL&client_secret=F2aAk53KPLTWQjY7T2G3C2HEnKb05Yuq", AccessTokenDto.class);
-        AccessTokenDto accessTokenDto = response.getBody();
-        assert accessTokenDto != null;
-        accessToken = accessTokenDto.getAccessToken();
+        UriComponentsBuilder builder = fromUriString(tokenUrl)
+                .queryParam("grant_type", grantType)
+                .queryParam("client_id", clientId)
+                .queryParam("client_secret", clientSecret);
+
+        // Request for access token
+        ResponseEntity<AiAccessTokenDto> response = restTemplate.getForEntity(builder.toUriString(), AiAccessTokenDto.class);
+        AiAccessTokenDto aiAccessTokenDto = response.getBody();
+        accessToken = aiAccessTokenDto.getAccessToken();
     }
 
     public AiResDto getAiAnswer(String question) {
@@ -42,27 +67,18 @@ public class AiApi {
         headers.set("Content-Type", "application/json");
         HttpEntity<String> requestEntity = new HttpEntity<>("{\"messages\":[{\"role\":\"user\",\"content\":\"" + question + "\"}]}", headers);
 
-        ResponseEntity<AiApiDto> response = restTemplate.postForEntity(
-                "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant?access_token=" + accessToken,
-                requestEntity,
-                AiApiDto.class
-        );
+        // Get answer from AI
+        ResponseEntity<AiDto> response = restTemplate.postForEntity(answerUrl + accessToken, requestEntity, AiDto.class);
+        AiDto aiDto = response.getBody();
 
-        AiApiDto aiApiDto = response.getBody();
         // If access token expired, request again
-        if (aiApiDto == null) {
+        if (aiDto == null || aiDto.getResult() == null) {
             getAiAccessToken();
-            response = restTemplate.postForEntity(
-                    "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant?access_token=" + accessToken,
-                    requestEntity,
-                    AiApiDto.class
-            );
-            aiApiDto = response.getBody();
+            response = restTemplate.postForEntity(answerUrl + accessToken, requestEntity, AiDto.class);
+            aiDto = response.getBody();
         }
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        assert aiApiDto != null; // assert 应该怎么用？
 
-        return new AiResDto(aiApiDto.getResult(), dateFormat.format(aiApiDto.getCreated()));
+        return new AiResDto(aiDto.getResult(), dateFormat.format(aiDto.getCreated()));
     }
 }

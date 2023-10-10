@@ -11,7 +11,7 @@ import java.util.Date;
  * @Author: Xiangnan Liu
  * @CreateTime: 2023-10-08
  */
-public class AiApiDto {
+public class AiDto {
     private String id;
     private String object;
     @JsonDeserialize(using = CustomDateDeserializer.class)
@@ -23,7 +23,7 @@ public class AiApiDto {
     private boolean needClearHistory;
     private Usage usage;
 
-    private static class Usage {
+    public static class Usage {
         @JsonProperty("prompt_tokens")
         private int promptTokens;
         @JsonProperty("completion_tokens")

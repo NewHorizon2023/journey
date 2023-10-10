@@ -3,3 +3,21 @@ spring:
     url: jdbc:mysql://mysql.cgwc3atjaolu.eu-north-1.rds.amazonaws.com:3306/journey
     username: admin
     password: 12345678
+
+api:
+  ai:
+    getAccessToken:
+      url: https://aip.baidubce.com/oauth/2.0/token
+      grantType: client_credentials
+      clientId: x5ElkR5OBBSRZbyDMm0dIYvL
+      clientSecret: F2aAk53KPLTWQjY7T2G3C2HEnKb05Yuq
+    answer:
+      url: https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant?access_token=
+  weather:
+    url: https://weatherapi-com.p.rapidapi.com/current.json
+    key: ff4f5cd3a6mshaae92fcc4c9b174p165136jsn644f4d752007
+    host: weatherapi-com.p.rapidapi.com
+  airbnb:
+    url: https://airbnb13.p.rapidapi.com/search-location
+    key: ff4f5cd3a6mshaae92fcc4c9b174p165136jsn644f4d752007
+    host: airbnb13.p.rapidapi.com

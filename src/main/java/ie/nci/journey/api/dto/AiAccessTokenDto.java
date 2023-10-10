@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @Author: Xiangnan Liu
  * @CreateTime: 2023-10-08
  */
-public class AccessTokenDto {
+public class AiAccessTokenDto {
     @JsonProperty("refresh_token")
     private String refreshToken;
     @JsonProperty("expires_in")
