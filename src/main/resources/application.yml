@@ -1,8 +1,12 @@
 spring:
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://mysql.cgwc3atjaolu.eu-north-1.rds.amazonaws.com:3306/journey
     username: admin
     password: 12345678
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: ie.nci.journey.entity
 
 api:
   ai:
