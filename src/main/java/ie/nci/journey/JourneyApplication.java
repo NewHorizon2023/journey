@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("ie.nci.journey.dao")
+@MapperScan("ie.nci.journey.mapper")
 public class JourneyApplication {
     public static void main(String[] args) {
         SpringApplication.run(JourneyApplication.class, args);

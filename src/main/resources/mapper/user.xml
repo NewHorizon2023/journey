@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ie.nci.journey.mapper.UserMapper">
+
+    <!-- 插入新用户 -->
+    <insert id="insert" parameterType="ie.nci.journey.entity.User">
+        INSERT INTO user(
+            name, password, create_time, update_time
+        )
+        VALUES (
+            #{name},
+            #{password},
+            #{createTime},
+            #{updateTime}
+               )
+    </insert>
+
+</mapper>
