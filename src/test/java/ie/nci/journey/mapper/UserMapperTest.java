@@ -21,7 +21,7 @@ public class UserMapperTest {
     @Test
     public void testInsertUser(){
         User user = new User();
-        user.setName("Lao Wang");
+        user.setName("Ada");
         user.setPassword("321");
         user.setCreateTime(new Date());
         userMapper.insert(user);
