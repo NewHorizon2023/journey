@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 /**
- * @author 刘祥楠
+ * @author Xiangnan Liu
  * @date 2023-10-12 12:32
  */
 @Entity
