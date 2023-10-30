@@ -5,6 +5,7 @@ spring:
     url: jdbc:mysql://mysql.cgwc3atjaolu.eu-north-1.rds.amazonaws.com:3306/journey
     username: admin
     password: 12345678
+
   jpa:
     hibernate:
       ddl-auto: update
