@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql.cgwc3atjaolu.eu-north-1.rds.amazonaws.com:3306/journey
+    url: jdbc:mysql://journey.cgwc3atjaolu.eu-north-1.rds.amazonaws.com:3306/journey
     username: admin
     password: 12345678
 
