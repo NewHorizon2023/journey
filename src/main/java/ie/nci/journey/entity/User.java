@@ -11,11 +11,20 @@ import java.util.Date;
 @Entity
 @Table
 public class User {
+    public static final int ACCOUNT_TYPE_ADMIN = 0;
+    public static final int ACCOUNT_TYPE_USER = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String username;
     private String password;
+    private String email;
+    private String phone;
+    /**
+     * 0: admin, 1: normal user
+     */
+    private Integer type;
     private Date createTime;
     private Date updateTime;
 
@@ -27,12 +36,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -41,6 +50,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Date getCreateTime() {

@@ -3,17 +3,21 @@
 
 <mapper namespace="ie.nci.journey.mapper.UserMapper">
 
-    <!-- 插入新用户 -->
-    <insert id="insert" parameterType="ie.nci.journey.entity.User">
-        INSERT INTO user(
-            name, password, create_time, update_time
-        )
-        VALUES (
-            #{name},
-            #{password},
-            #{createTime},
-            #{updateTime}
-               )
+    <!-- create new user -->
+    <insert id="insert" parameterType="ie.nci.journey.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(username, password, email, phone, type, create_time, update_time)
+        VALUES (#{username},
+                #{password},
+                #{email},
+                #{phone},
+                #{type},
+                #{createTime},
+                #{updateTime})
     </insert>
+    <select id="selectByUsername">
+        SELECT *
+        FROM user
+        WHERE username = #{username}
+    </select>
 
 </mapper>
