@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,27 +47,43 @@
     <p>15℃</p>
 </div>
 
-<!-- Login Module -->
-<div id="login">
-    <form>
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username">
+<c:choose>
+    <c:when test="${not empty sessionScope.user}">
+        <!-- User Welcome Section -->
+        <div id="user-welcome">
+            <p id="welcome-message">Hello, ${sessionScope.user.username}</p>
+            <button id="logout-btn" class="btn btn-danger">Logout</button>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
-        </div>
-        <button id="login-btn" type="submit" class="btn btn-primary">Login</button>
-    </form>
-    <p class="mt-2">No account? <a href="${pageContext.request.contextPath}/user/register">Register</a></p>
-</div>
+    </c:when>
+    <c:otherwise>
+        <div id="login">
+            <form action="${pageContext.request.contextPath}/user/login" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button id="login-btn" type="submit" class="btn btn-primary">Login</button>
+            </form>
 
-<!-- User Welcome Section -->
-<div id="user-welcome" style="display: none;">
-    <p id="welcome-message"></p>
-    <button id="logout-btn" class="btn btn-danger">Logout</button>
-</div>
+            <c:choose>
+                <c:when test="${not empty sessionScope.loginFail}">
+                    <p id="wrong-name-pwd" class="mt-2">Username or password is wrong, please try again.</p>
+                    <% request.getSession().removeAttribute("loginFail"); %>
+                </c:when>
+                <c:otherwise>
+                    <p class="mt-2">No account? <a href="${pageContext.request.contextPath}/user/register">Register</a>
+                    </p>
+                </c:otherwise>
+            </c:choose>
+
+        </div>
+    </c:otherwise>
+</c:choose>
+
 
 <!-- Animated Falling Leaves -->
 <div class="falling-leaves">

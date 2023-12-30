@@ -1,8 +1,10 @@
 package ie.nci.journey.controller;
 
+import ie.nci.journey.controller.dto.request.UserLoginDto;
 import ie.nci.journey.entity.User;
 import ie.nci.journey.manager.UserManager;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -45,5 +47,22 @@ public class UserController {
         return "redirect:/";
     }
 
+    @PostMapping("/login")
+    public String login(@ModelAttribute UserLoginDto userLoginDto, HttpSession session) {
+        User user = userManager.selectByUsernamePassword(userLoginDto);
+        session.setAttribute("user", user);
+
+        if (user == null) {
+            session.setAttribute("loginFail", "fail");
+        }
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:/";
+    }
 
 }

@@ -14,10 +14,18 @@
                 #{createTime},
                 #{updateTime})
     </insert>
+
     <select id="selectByUsername">
         SELECT *
         FROM user
         WHERE username = #{username}
+    </select>
+
+    <select id="selectByUsernamePassword" parameterType="ie.nci.journey.controller.dto.request.UserLoginDto">
+        SELECT *
+        FROM user
+        WHERE username = #{username}
+        AND password = #{password}
     </select>
 
 </mapper>
