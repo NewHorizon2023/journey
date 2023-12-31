@@ -1,50 +1,53 @@
 body, html {
-            height: 100%;
-            margin: 0;
-        }
+    height: 100%;
+    margin: 0;
+}
 
-        body {
-            background: url('../img/tree-3358468.jpg') center center fixed;
-            background-size: cover;
-            color: #000;
-            overflow-x: hidden;
-            overflow-y: hidden;
-            position: relative;
-        }
+body {
+    background: url('../img/tree-3358468.jpg') center center fixed;
+    background-size: cover;
+    color: #000;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+}
 
-        .container {
-            //background-color: #bf907e;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 50px;
-        }
-		
-		.form-group label {
-            color: white;
-        }
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 50px;
+}
 
-        .form-group.required label:after {
-            content: "*";
-            color: red;
-        }
+.container h2 {
+    color: white;
+}
 
-        #registration-message {
-            color: red;
-            margin-top: 10px;
-        }
+.form-group label {
+    color: white;
+}
 
-        /* Custom styles for the form layout */
-        #registration-form {
-            width: 50%; /* Set the form width to two-thirds of the container */
-            margin: 0 auto; /* Center the form horizontally */
-        }
+.form-group.required label:after {
+    content: "*";
+    color: red;
+}
 
-        #registration-form .form-group {
-            width: 100%; /* Each input field takes up the full width of the form */
-            margin-bottom: 15px; /* Add some vertical spacing between form elements */
-        }
+#registration-message {
+    color: red;
+    margin-top: 10px;
+}
 
-        #registration-form button {
-            margin-top: 15px; /* Add spacing between the Submit button and the last input field */
-        }
+/* Custom styles for the form layout */
+#registration-form {
+    width: 50%; /* Set the form width to two-thirds of the container */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+#registration-form .form-group {
+    width: 100%; /* Each input field takes up the full width of the form */
+    margin-bottom: 15px; /* Add some vertical spacing between form elements */
+}
+
+#registration-form button {
+    margin-top: 15px; /* Add spacing between the Submit button and the last input field */
+}
