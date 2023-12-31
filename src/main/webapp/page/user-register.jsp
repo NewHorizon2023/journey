@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration</title>
+    <title>Registration - Journey</title>
+    <link rel="icon" href="../img/leaf-3.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/user-register.css">
@@ -19,16 +20,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}">Home</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Airbnb Booking</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/booking">Airbnb Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Q&A</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/qa">Q&A</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Admin</a>

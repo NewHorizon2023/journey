@@ -1,0 +1,30 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: url('../img/tree-3358468.jpg') center center fixed;
+    background-size: cover;
+    color: #000; /* Set font color to black */
+    position: relative;
+}
+
+/* Style for the search form */
+#booking-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Style for the red asterisk */
+.required-field::before {
+    content: '*';
+    color: red;
+}
+
+/* Style for the error message */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

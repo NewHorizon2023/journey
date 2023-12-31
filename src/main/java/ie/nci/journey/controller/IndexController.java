@@ -17,4 +17,13 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/booking")
+    public String booking() {
+        return "page/booking";
+    }
+
+    @GetMapping("/qa")
+    public String qa(){
+        return "page/qa";
+    }
 }
