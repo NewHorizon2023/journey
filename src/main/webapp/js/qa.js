@@ -15,15 +15,15 @@ $(document).ready(function () {
 // Function to add a new answer to the answer container
 function addAnswer() {
     const question = {
-        messages:[
+        messages: [
             {
-                role:"user",
-                content:$('#question-input input').val()
+                role: "user",
+                content: $('#question-input input').val()
             }
         ]
     };
 
-    console.log(question);
+    // waiting icon
     $('#answer-container').html('<div class="loading-spinner"></div>');
 
     $.ajax({

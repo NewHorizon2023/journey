@@ -1,9 +1,7 @@
 $(document).ready(function () {
-
     $('#airbnbSearch').click(function () {
         getAirbnbData();
     });
-
 });
 
 // Function to validate the form inputs
@@ -73,7 +71,6 @@ function createResultCard(result) {
 
 // Call the function to display search results
 function searchAirbnb(searchResultsData) {
-
     // Check form validation before proceeding
     if (!validateForm()) {
         return;
@@ -98,8 +95,10 @@ function searchAirbnb(searchResultsData) {
 }
 
 function getAirbnbData() {
-    let responseData;
-    let param = {
+    // add loading spinner
+    $('#search-results').html('<div class="loading-spinner"></div>');
+
+    const param = {
         location: $('#location').val(),
         checkin: $('#checkin').val(),
         checkout: $('#checkout').val(),
@@ -107,7 +106,6 @@ function getAirbnbData() {
         children: $('#children').val(),
         infants: $('#infants').val(),
         pets: $('#page').val(),
-        page: $('#page').val(),
         currency: $('#currency').val()
     };
 
@@ -127,6 +125,4 @@ function getAirbnbData() {
             alert("An unknown exception occurred, please try again later");
         }
     });
-
-    return responseData;
 }
