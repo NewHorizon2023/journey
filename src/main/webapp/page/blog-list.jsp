@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Q&A - Journey</title>
+    <title>Blog List - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/qa.css">
+    <link rel="stylesheet" href="../css/blog-list.css">
 </head>
 <body>
 
@@ -22,11 +23,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/booking">Airbnb Booking</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/blog/list">Blog</a>
+                <li class="nav-item"> <!-- Keep Airbnb Booking as active -->
+                    <a class="nav-link active" href="${pageContext.request.contextPath}/blog/list">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active">Q&A</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/qa">Q&A</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Admin</a>
@@ -36,19 +37,25 @@
     </div>
 </nav>
 
-<!-- Q&A Container -->
-<div id="qa-container" class="container">
-    <!-- Question Input -->
-    <div class="input-group mb-3" id="question-input">
-        <input id="question-text" type="text" class="form-control" placeholder="Ask a question..." aria-label="Ask a question..."
-               aria-describedby="ask-button">
-        <button class="btn btn-primary" type="button" id="ask-button">Ask</button>
+<!-- Blog Posts Section -->
+<div id="blog-posts" class="container">
+    <div class="blog-post">
+        <c:forEach var="blog" items="${blogList}">
+            <p><a href="${pageContext.request.contextPath}/blog/detail?id=${blog.id}">${blog.title}</a></p>
+            <c:choose>
+                <c:when test="${empty user or user.type == 1 and user.id != blog.authorId}">
+                </c:when>
+                <c:otherwise>
+                    <button class="delete-btn btn btn-danger" blogId="${blog.id}" authorId="${blog.authorId}">Delete
+                    </button>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
     </div>
 
-    <!-- Answer Container -->
-    <div id="answer-container">
-        <!-- Answers will be dynamically added here using JavaScript -->
-    </div>
+
+    <!-- Add Blog Button -->
+    <button id="add-blog-btn" class="btn btn-primary">Add Blog</button>
 </div>
 
 <!-- jQuery -->
@@ -56,8 +63,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Your additional JavaScript for handling questions and answers -->
-<script src="../js/qa.js"></script>
+<script src="../js/blog-list.js"></script>
 </body>
 </html>
 

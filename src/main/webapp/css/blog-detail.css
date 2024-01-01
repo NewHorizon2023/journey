@@ -1,0 +1,39 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: url('../img/tree-3358468.jpg') center center fixed;
+    background-size: cover;
+    color: #000; /* Set font color to black */
+    position: relative;
+    padding-top: 60px; /* Adjusted for the fixed navbar */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blog-post, .comment, #comment-form-div {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.comment {
+    margin-top: 10px;
+}
+
+#comment-form-div {
+    margin-top: 20px;
+}
+
+.blog-post {
+    background-color: #fff;
+}

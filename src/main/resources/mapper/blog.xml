@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ie.nci.journey.mapper.BlogMapper">
+
+    <!-- create new user -->
+    <insert id="insert" parameterType="ie.nci.journey.entity.Blog" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO blog(title, content, author_id, status, create_time, update_time)
+        VALUES (#{title},
+                #{content},
+                #{authorId},
+                #{status},
+                #{createTime},
+                #{updateTime})
+    </insert>
+
+    <select id="selectAll">
+        SELECT *
+        FROM blog
+        WHERE status = 1
+    </select>
+
+    <select id="selectById">
+        SELECT *
+        FROM blog
+        WHERE id = #{id}
+          AND status = 1
+    </select>
+
+    <update id="deleteById">
+        UPDATE blog
+        SET status = 0
+        WHERE id = #{id}
+    </update>
+
+</mapper>

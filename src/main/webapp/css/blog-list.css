@@ -1,0 +1,42 @@
+/* Your existing styles... */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: url('../img/tree-3358468.jpg') center center fixed;
+    background-size: cover;
+    color: #000; /* Set font color to black */
+    position: relative;
+}
+
+#blog-posts {
+    width: 60%;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+/* Style for the blog post container */
+.blog-post {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.blog-post p a {
+    text-decoration: none;
+}
+
+/* Style for the delete button (visible to admin only) */
+.delete-btn {
+    float: right;
+    margin-top: -30px;
+    margin-right: 10px;
+}
+
+/* Style for the "Add Blog" button */
+#add-blog-btn {
+    margin-top: 20px;
+}

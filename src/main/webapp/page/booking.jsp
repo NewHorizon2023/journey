@@ -25,7 +25,7 @@
                     <a class="nav-link active">Airbnb Booking</a>
                 </li>
                 <li class="nav-item"> <!-- Keep Airbnb Booking as active -->
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/blog/list">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/qa">Q&A</a>

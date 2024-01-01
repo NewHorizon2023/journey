@@ -1,5 +1,6 @@
 package ie.nci.journey.controller;
 
+import ie.nci.journey.controller.constant.UserConstant;
 import ie.nci.journey.controller.dto.request.UserLoginDto;
 import ie.nci.journey.entity.User;
 import ie.nci.journey.manager.UserManager;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+import static ie.nci.journey.controller.constant.UserConstant.USER_KEY;
 
 /**
  * UserController
@@ -50,7 +53,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute UserLoginDto userLoginDto, HttpSession session) {
         User user = userManager.selectByUsernamePassword(userLoginDto);
-        session.setAttribute("user", user);
+        session.setAttribute(USER_KEY, user);
 
         if (user == null) {
             session.setAttribute("loginFail", "fail");
@@ -61,7 +64,7 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.removeAttribute("user");
+        session.removeAttribute(USER_KEY);
         return "redirect:/";
     }
 

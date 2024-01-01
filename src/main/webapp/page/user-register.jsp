@@ -27,7 +27,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/booking">Airbnb Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/blog">Blog</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/blog/list">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/qa">Q&A</a>
