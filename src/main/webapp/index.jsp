@@ -43,10 +43,10 @@
 
 <!-- Weather Information -->
 <div id="weather">
-    <p>Dublin</p>
-    <p>Partly cloudy</p>
-    <img src="http://cdn.weatherapi.com/weather/64x64/night/116.png" alt="Weather Icon">
-    <p>15℃</p>
+    <p id="city-name">Dublin</p>
+    <p id="weather-info">Partly cloudy</p>
+    <img id="weather-img" src="http://cdn.weatherapi.com/weather/64x64/night/116.png" alt="Weather Icon">
+    <p id="temperature">15℃</p>
 </div>
 
 <c:choose>
