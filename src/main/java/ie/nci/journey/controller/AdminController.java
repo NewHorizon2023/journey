@@ -18,54 +18,53 @@ import java.util.List;
 import static ie.nci.journey.controller.constant.UserConstant.USER_KEY;
 
 /**
- * UserController
+ * AdminController
  *
  * @Author: Xiangnan Liu
- * @CreateTime: 2023-12-30
+ * @CreateTime: 2024-01-02
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin")
+public class AdminController {
 
     @Resource
     private UserManager userManager;
 
     @GetMapping("/register")
-    public String userRegister() {
-        return "page/user-register";
+    public String register() {
+        return "page/admin-register";
     }
 
     @PostMapping("/registerSubmit")
-    public String registerProcess(@ModelAttribute User user, Model model) {
+    public String registerSubmit(@ModelAttribute User user, Model model) {
         List<User> users = userManager.selectByUsername(user.getUsername());
 
         if (!CollectionUtils.isEmpty(users)) {
-            model.addAttribute("userExisted", "This username is existed, please try another one.");
-            return "page/user-register";
+            model.addAttribute("adminExisted", "This admin account is existed, please try another one.");
+            return "page/admin-register";
         }
 
-        user.setType(User.ACCOUNT_TYPE_USER);
+        user.setType(User.ACCOUNT_TYPE_ADMIN);
         userManager.userRegister(user);
 
-        return "redirect:/";
+        return "redirect:/admin/login";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
+    public String login() {
+        return "page/admin-login";
+    }
+
+    @PostMapping("/loginSubmit")
     public String login(@ModelAttribute UserLoginDto userLoginDto, HttpSession session) {
         User user = userManager.selectByUsernamePassword(userLoginDto);
         session.setAttribute(USER_KEY, user);
 
         if (user == null) {
-            session.setAttribute("loginFail", "fail");
+            session.setAttribute("adminLoginFail", "fail");
+            return "redirect:/admin/login";
         }
 
         return "redirect:/";
     }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.removeAttribute(USER_KEY);
-        return "redirect:/";
-    }
-
 }

@@ -24,7 +24,6 @@ public class UserManagerImpl implements UserManager {
     @Override
     public User userRegister(User user) {
         user.setCreateTime(new Date());
-        user.setType(User.ACCOUNT_TYPE_USER);
         userMapper.insert(user);
 
         return user;

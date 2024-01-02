@@ -8,7 +8,6 @@ body {
     background-size: cover;
     color: #000; /* Set font color to black */
     position: relative;
-    padding-top: 60px; /* Adjusted for the fixed navbar */
 }
 
 .container {

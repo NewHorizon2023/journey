@@ -1,0 +1,51 @@
+body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: url('../img/tree-3358468.jpg') center center fixed;
+            background-size: cover;
+            color: #000;
+            position: relative;
+        }
+
+        .container {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container h2{
+            color: white;
+        }
+		
+		.form-group label {
+            color: white;
+        }
+
+        .form-group.required label:after {
+            content: "*";
+            color: red;
+        }
+
+        #registration-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Custom styles for the form layout */
+        #login-form {
+            width: 50%; /* Set the form width to two-thirds of the container */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        #login-form .form-group {
+            width: 100%; /* Each input field takes up the full width of the form */
+            margin-bottom: 15px; /* Add some vertical spacing between form elements */
+        }
+
+        #login-form button {
+            margin-top: 15px; /* Add spacing between the Submit button and the last input field */
+        }

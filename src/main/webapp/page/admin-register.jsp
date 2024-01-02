@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration - Journey</title>
+    <title>Admin Registration - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/user-register.css">
+    <link rel="stylesheet" href="../css/admin-register.css">
 
 </head>
 <body>
@@ -19,8 +19,9 @@
 
 <!-- Registration Form -->
 <div class="container mt-5">
+    <h2>Admin Register</h2>
     <div class="container">
-        <form id="registration-form" action="${pageContext.request.contextPath}/user/registerSubmit" method="post">
+        <form id="registration-form" action="${pageContext.request.contextPath}/admin/registerSubmit" method="post">
             <div class="form-group required row align-items-center">
                 <label for="username" class="col-sm-2 col-form-label">Username:</label>
                 <div class="col-sm-10">
@@ -42,29 +43,15 @@
                 </div>
             </div>
 
-            <div class="form-group row align-items-center">
-                <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-            </div>
-
-            <div class="form-group row align-items-center">
-                <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
-                <div class="col-sm-10">
-                    <input type="tel" class="form-control" id="phone" name="phone">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-2">
-                    <button id="user-register" type="button" class="btn btn-primary">Submit</button>
+                    <button id="user-register" type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
 
             <p id="registration-message">
-                <c:if test="${not empty userExisted}">
-                    ${userExisted}
+                <c:if test="${not empty adminExisted}">
+                    ${adminExisted}
                 </c:if>
             </p>
         </form>
@@ -76,7 +63,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="../js/user-register.js"></script>
+<%--<script src="../js/admin-register.js"></script>--%>
 
 </body>
 </html>

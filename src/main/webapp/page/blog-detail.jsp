@@ -14,29 +14,7 @@
 <body>
 
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/booking">Airbnb Booking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/blog/list">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/qa">Q&A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Admin</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%@ include file="common-nav.jsp" %>
 
 <!-- Blog Post Content -->
 <div class="container">

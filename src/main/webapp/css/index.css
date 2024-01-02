@@ -7,8 +7,6 @@ body {
     background: url('../img/tree-3358468.jpg') center center fixed;
     background-size: cover;
     color: #000; /* Set font color to black */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-    overflow-y: hidden; /* Hide vertical scrollbar */
     position: relative;
 }
 
