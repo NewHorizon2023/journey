@@ -1,17 +1,71 @@
 $(document).ready(function () {
-    // Add comment button click event
-    $('#comment-submit').on('click', function () {
-        if ($('#comment-text').val()) {
-            $('#comment-form').submit();
+    $('.blog-delete').on('click', function () {
+        const blogDto = {
+            blogId: $(this).attr('blogId'),
+            authorId: $(this).attr('authorId')
         }
+
+        $.ajax({
+            type: 'POST',
+            url: window.location.origin + '/blog/delete',
+            data: JSON.stringify(blogDto),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (response) {
+                window.location.href = window.location.origin + '/blog/list';
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     });
 
+    // Add comment button click event
+    $('#comment-form').submit(function (event) {
+        event.preventDefault();
+        //action="${pageContext.request.contextPath}/comment/submit" method="post"
+        const contentText = $('#comment-text').val();
+        if (!contentText) {
+            alert('Comment cannot be empty!')
+        }
+
+        // 获取当前页面的URL
+        const url = new URL(window.location.href);
+        const blogId = url.searchParams.get('id');
+
+        const comment = {
+            content: contentText,
+            blogId: blogId
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: window.location.origin + '/comment/submit',
+            data: JSON.stringify(comment),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (response) {
+                const newCommentDiv = '<div><p><strong>' + response.data.authorName + ':</strong>' + contentText + '</p><div class="text-end"><button class="btn btn-danger comment-delete" authorId="' + response.data.authorId + '" commentId="' + response.data.id + '" blogId="' +
+                    response.data.blogId + '">Delete</button></div></div>';
+
+                // Append new comment to the end of the container
+                $('#comments').append(newCommentDiv);
+                $('#comment-text').val('');
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+
+    });
+
+    let commentDto;
     // Delete comment button click event
-    $('#comment-delete').on('click', function () {
-        const commentDto = {
-            blogId: this.blogId,
-            authorId: this.authorId,
-            commentId: this.commentId
+    $('.comment-delete').on('click', function () {
+        commentDto = {
+            blogId: $(this).attr('blogId'),
+            authorId: $(this).attr('authorId'),
+            commentId: $(this).attr('commentId')
         }
 
         $.ajax({
@@ -21,12 +75,14 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json',
             success: function (response) {
-                $(this).remove();
+                $('#comment-' + commentDto.commentId).remove();
+                console.log();
             },
             error: function (error) {
                 console.error('Error:', error);
             }
         });
     });
+
 });
 

@@ -51,7 +51,7 @@
                 <c:when test="${empty user or user.type == 1 and user.id != blog.authorId}">
                 </c:when>
                 <c:otherwise>
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger blog-delete" blogId="${blog.id}" authorId="${blog.authorId}">Delete</button>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -61,14 +61,14 @@
     <div id="comments" class="comment">
         <h3>Comments</h3>
         <c:forEach var="comment" items="${commentList}">
-            <div>
+            <div id="comment-${comment.id}">
                 <p><strong>${comment.authorName}:</strong> ${comment.content}</p>
                 <div class="text-end">
                     <c:choose>
                         <c:when test="${empty user or user.type == 1 and user.id != blog.authorId}">
                         </c:when>
                         <c:otherwise>
-                            <button id="comment-delete" class="btn btn-danger" authorId="${comment.authorId}" commentId="${comment.id}"
+                            <button class="btn btn-danger comment-delete" authorId="${comment.authorId}" commentId="${comment.id}"
                                     blogId="${comment.blogId}">Delete
                             </button>
                         </c:otherwise>
@@ -81,7 +81,7 @@
     <!-- Comment Input Form -->
     <div id="comment-form-div" class="mt-4">
         <h3>Add a Comment</h3>
-        <form id="comment-form" action="${pageContext.request.contextPath}/comment/submit" method="post">
+        <form id="comment-form">
             <div class="mb-3">
                 <label for="comment-text" class="form-label">Comment:</label>
                 <textarea class="form-control" id="comment-text" rows="3"></textarea>

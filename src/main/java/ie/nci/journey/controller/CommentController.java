@@ -8,10 +8,10 @@ import ie.nci.journey.manager.CommentManager;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Objects;
 
@@ -31,21 +31,23 @@ public class CommentController {
     @Resource
     private CommentManager commentManager;
 
+    @ResponseBody
     @PostMapping("/submit")
-    public String submit(@ModelAttribute Comment comment, HttpSession session) {
+    public Response<Comment> submit(@RequestBody Comment comment, HttpSession session) {
         User user = (User) session.getAttribute(USER_KEY);
 
         if (user == null) {
-            return "redirect:/";
+            return Response.error("You need login.");
         }
 
         comment.setAuthorId(user.getId());
         comment.setAuthorName(user.getUsername());
-        commentManager.create(comment);
+        comment = commentManager.create(comment);
 
-        return "redirect:/blog/detail?" + comment.getBlogId();
+        return Response.ok(comment);
     }
 
+    @ResponseBody
     @PostMapping("/delete")
     public Response<Objects> delete(@RequestBody CommentDto commentDto, HttpSession session) {
         User user = (User) session.getAttribute(USER_KEY);
@@ -55,7 +57,7 @@ public class CommentController {
         }
 
         commentManager.deleteById(commentDto.getCommentId());
-
         return Response.ok();
     }
+
 }

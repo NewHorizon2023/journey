@@ -25,6 +25,17 @@ body {
     border-radius: 8px;
 }
 
+/* 在你的样式表中添加以下样式 */
+.blog-list {
+    display: grid;
+    grid-template-columns: 1fr auto; /* 第一个列自动调整大小，第二个列自动适应内容宽度 */
+    align-items: center;
+}
+
+.delete-btn {
+    font-size: 10px; /* 调整为适当的大小 */
+}
+
 .blog-post p a {
     text-decoration: none;
 }

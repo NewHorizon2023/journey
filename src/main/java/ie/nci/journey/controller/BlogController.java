@@ -68,6 +68,7 @@ public class BlogController {
         return "page/blog-editor";
     }
 
+    @ResponseBody
     @PostMapping("/submit")
     public Response<Blog> submit(@RequestBody Blog blog, HttpSession session) {
         User user = (User) session.getAttribute(USER_KEY);
@@ -82,16 +83,17 @@ public class BlogController {
         return Response.ok(blog);
     }
 
+    @ResponseBody
     @PostMapping("/delete")
-    public String delete(@RequestBody BlogDto blogDto, HttpSession session) {
+    public Response<BlogDto> delete(@RequestBody BlogDto blogDto, HttpSession session) {
         User user = (User) session.getAttribute(USER_KEY);
 
         if (user == null || user.getType() != ACCOUNT_TYPE_ADMIN && !Objects.equals(user.getId(), blogDto.getAuthorId())) {
-            return "redirect:/blog/detail?" + blogDto.getBlogId();
+            return Response.error("You need to login.");
         }
 
         blogManager.deleteById(blogDto.getBlogId());
-
-        return "redirect:/blog/detail?" + blogDto.getBlogId();
+        return Response.ok(blogDto);
     }
+
 }
