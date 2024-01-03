@@ -23,7 +23,7 @@
 <div id="weather">
     <p id="city-name">Dublin</p>
     <p id="weather-info">Partly cloudy</p>
-    <img id="weather-img" src="http://cdn.weatherapi.com/weather/64x64/night/116.png" alt="Weather Icon">
+    <img id="weather-img" src="https://cdn.weatherapi.com/weather/64x64/night/116.png" alt="Weather Icon">
     <p id="temperature">15℃</p>
 </div>
 
