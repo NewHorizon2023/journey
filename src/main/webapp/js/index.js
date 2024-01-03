@@ -46,7 +46,7 @@ function weather() {
                 success: function (response) {
                     $('#city-name').text(response.data.location.name);
                     $('#weather-info').text(response.data.current.condition.text);
-                    $('#weather-img').attr('src', 'http:' + response.data.current.condition.icon);
+                    $('#weather-img').attr('src', 'https:' + response.data.current.condition.icon);
                     $('#temperature').text(response.data.current.temp_c + '℃');
                 },
                 error: function (error) {
