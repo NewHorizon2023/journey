@@ -110,16 +110,12 @@ function getAirbnbData() {
     };
 
     $.ajax({
-        url: 'https://airbnb13.p.rapidapi.com/search-location',
+        url: window.location.origin + '/api/airbnb',
         method: 'GET',
         data: param,
         dataType: 'json',
-        headers: {
-            'X-RapidAPI-Key': 'ff4f5cd3a6mshaae92fcc4c9b174p165136jsn644f4d752007',
-            'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
-        },
         success: function (response) {
-            searchAirbnb(response);
+            searchAirbnb(response.data);
         },
         error: function (error) {
             alert("An unknown exception occurred, please try again later");
