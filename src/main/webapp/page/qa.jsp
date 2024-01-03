@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Q&A - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/qa.css">
 </head>
 <body>
@@ -30,9 +30,9 @@
 </div>
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/jQuery.js"></script>
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.js"></script>
 
 <!-- Your additional JavaScript for handling questions and answers -->
 <script src="../js/qa.js"></script>

@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog List - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <!-- Bootstrap Icons CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@5.0.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/blog-list.css">
 </head>
 <body>
@@ -19,6 +18,7 @@
 
 <!-- Blog Posts Section -->
 <div id="blog-posts" class="container">
+    <h2>Blog List</h2>
     <div class="blog-post">
         <c:forEach var="blog" items="${blogList}">
             <div id="blog-${blog.id}" class="blog-list">
@@ -40,9 +40,9 @@
 </div>
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/jQuery.js"></script>
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.js"></script>
 
 <script src="../js/blog-list.js"></script>
 </body>

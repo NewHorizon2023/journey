@@ -8,7 +8,7 @@
     <title>Registration - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/user-register.css">
 
 </head>
@@ -19,6 +19,7 @@
 
 <!-- Registration Form -->
 <div class="container mt-5">
+    <h2>User Register</h2>
     <div class="container">
         <form id="registration-form" action="${pageContext.request.contextPath}/user/registerSubmit" method="post">
             <div class="form-group required row align-items-center">
@@ -72,9 +73,9 @@
 </div>
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/jQuery.js"></script>
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.js"></script>
 
 <script src="../js/user-register.js"></script>
 
