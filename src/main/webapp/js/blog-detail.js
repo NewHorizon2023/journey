@@ -20,6 +20,10 @@ $(document).ready(function () {
         });
     });
 
+    $('#edit-btn').on('click', function (){
+        window.location.href = window.location.origin + '/blog/editor?id=' + $(this).val();
+    });
+
     // Add comment button click event
     $('#comment-form').submit(function (event) {
         event.preventDefault();

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +21,16 @@
 <div class="blog-container">
     <div class="blog-title">
         <label for="blogTitle">Blog Title:</label>
-        <input type="text" id="blogTitle" class="form-control" placeholder="Enter your blog title">
+        <input type="text" id="blogTitle" value="${blog.title}" class="form-control" placeholder="Enter your blog title">
     </div>
 
     <div class="blog-body">
         <label for="blogBody">Blog Body:</label>
-        <textarea id="blogBody" class="form-control" placeholder="Write your blog content here"></textarea>
+        <textarea id="blogBody" class="form-control" placeholder="Write your blog content here">
+            <c:if test="${not empty blog}">
+                ${fn:trim(blog.content)}
+            </c:if>
+        </textarea>
     </div>
 
     <!-- Additional styling for the submit button -->

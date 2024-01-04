@@ -64,7 +64,9 @@ public class BlogController {
     }
 
     @GetMapping("/editor")
-    public String editor() {
+    public String editor(@RequestParam Long id, Model model) {
+        Blog blog = blogManager.selectById(id);
+        model.addAttribute("blog", blog);
         return "page/blog-editor";
     }
 

@@ -23,7 +23,7 @@
         <p>${blog.content}</p>
         <div class="text-end">
             <c:if test="${not empty user and user.id == blog.authorId}">
-                <button class="btn btn-primary">Edit</button>
+                <button id="edit-btn" value="${blog.id}" class="btn btn-primary">Edit</button>
             </c:if>
             <c:choose>
                 <c:when test="${empty user or user.type == 1 and user.id != blog.authorId}">
