@@ -65,8 +65,14 @@ public class BlogController {
 
     @GetMapping("/editor")
     public String editor(@RequestParam Long id, Model model) {
+        if (id == null) {
+            model.addAttribute("blog", null);
+            return "page/blog-editor";
+        }
+
         Blog blog = blogManager.selectById(id);
         model.addAttribute("blog", blog);
+
         return "page/blog-editor";
     }
 
@@ -83,6 +89,17 @@ public class BlogController {
         blog = blogManager.createBlog(blog);
 
         return Response.ok(blog);
+    }
+
+    @ResponseBody
+    @PostMapping("/update")
+    public Response<Blog> update(@RequestBody Blog blog, HttpSession session) {
+        Blog oldBlog = blogManager.selectById(blog.getId());
+        oldBlog.setTitle(blog.getTitle());
+        oldBlog.setContent(blog.getContent());
+        blogManager.update(oldBlog);
+
+        return Response.ok(oldBlog);
     }
 
     @ResponseBody

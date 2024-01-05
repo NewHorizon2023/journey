@@ -1,14 +1,18 @@
 $(document).ready(function () {
     // Add Blog button click event
     $('#blog-submit').on('click', function () {
+        let $blotTitle = $('#blogTitle');
         const blog = {
-            title: $('#blogTitle').val(),
+            id: $blotTitle.attr("blogId"),
+            title: $blotTitle.val(),
             content: $('#blogBody').val()
         }
 
+        let url = blog.id ? window.location.origin + '/blog/update' : window.location.origin + '/blog/submit';
+
         $.ajax({
             type: 'POST',
-            url: window.location.origin + '/blog/submit',
+            url: url,
             data: JSON.stringify(blog),
             dataType: 'json',
             contentType: 'application/json',

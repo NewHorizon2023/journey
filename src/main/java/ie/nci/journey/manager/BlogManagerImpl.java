@@ -26,6 +26,12 @@ public class BlogManagerImpl implements BlogManager {
     }
 
     @Override
+    public void update(Blog blog) {
+        blog.setUpdateTime(new Date());
+        blogMapper.update(blog);
+    }
+
+    @Override
     public void deleteById(Long id) {
         blogMapper.deleteById(id);
     }

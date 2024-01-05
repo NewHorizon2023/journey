@@ -12,6 +12,17 @@
                 #{createTime},
                 #{updateTime})
     </insert>
+    <!-- create new user -->
+    <insert id="update" parameterType="ie.nci.journey.entity.Blog">
+        UPDATE blog
+        SET title       = #{title},
+            content     = #{content},
+            author_id   = #{authorId},
+            status      = #{status},
+            create_time = #{createTime},
+            update_time = #{updateTime}
+        WHERE id = #{id}
+    </insert>
 
     <select id="selectAll">
         SELECT *

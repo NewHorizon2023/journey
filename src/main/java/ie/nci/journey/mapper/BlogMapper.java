@@ -12,6 +12,8 @@ public interface BlogMapper {
 
     void insert(Blog blog);
 
+    void update(Blog blog);
+
     void deleteById(Long id);
 
     Blog selectById(Long id);

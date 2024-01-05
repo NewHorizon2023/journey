@@ -8,9 +8,11 @@ public interface BlogManager {
 
     List<Blog> selectAll();
 
+    void update(Blog blog);
+
     void deleteById(Long id);
 
-    Blog createBlog(Blog blog);
-
     Blog selectById(Long id);
+
+    Blog createBlog(Blog blog);
 }
