@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registration - Journey</title>
-    <link rel="icon" href="../img/leaf-3.png" type="image/png">
+    <link rel="icon" href="${pageContext.request.contextPath}/../img/leaf-3.png" type="image/png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/user-register.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/../css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/../css/user-register.css">
 
 </head>
 <body>
@@ -73,11 +73,11 @@
 </div>
 
 <!-- jQuery -->
-<script src="../js/jQuery.js"></script>
+<script src="${pageContext.request.contextPath}/../js/jQuery.js"></script>
 <!-- Bootstrap JS -->
-<script src="../js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/../js/bootstrap.js"></script>
 
-<script src="../js/user-register.js"></script>
+<script src="${pageContext.request.contextPath}/../js/user-register.js"></script>
 
 </body>
 </html>

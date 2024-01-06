@@ -8,8 +8,8 @@
     <title>Blog Detail - Journey</title>
     <link rel="icon" href="../img/leaf-3.png" type="image/png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/blog-detail.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/../css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/../css/blog-detail.css">
 </head>
 <body>
 
@@ -70,11 +70,11 @@
 </div>
 
 <!-- jQuery -->
-<script src="../js/jQuery.js"></script>
+<script src="${pageContext.request.contextPath}/../js/jQuery.js"></script>
 <!-- Bootstrap JS -->
-<script src="../js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/../js/bootstrap.js"></script>
 
-<script src="../js/blog-detail.js"></script>
+<script src="${pageContext.request.contextPath}/../js/blog-detail.js"></script>
 
 </body>
 </html>
