@@ -29,9 +29,7 @@
     <div class="blog-body">
         <label for="blogBody">Blog Body:</label>
         <textarea id="blogBody" class="form-control" placeholder="Write your blog content here"><c:if
-                test="${blog ne null}">
-            ${blog.content}
-        </c:if></textarea>
+                test="${blog ne null}">${fn:trim(blog.content)}</c:if></textarea>
     </div>
 
     <!-- Additional styling for the submit button -->
