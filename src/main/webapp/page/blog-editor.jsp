@@ -30,7 +30,7 @@
         <label for="blogBody">Blog Body:</label>
         <textarea id="blogBody" class="form-control" placeholder="Write your blog content here">
             <c:if test="${blog ne null}">
-                ${fn:trim(blog.content)}
+                ${blog.content}
             </c:if>
         </textarea>
     </div>
